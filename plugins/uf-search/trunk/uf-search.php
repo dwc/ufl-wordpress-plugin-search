@@ -3,7 +3,7 @@
 Plugin Name: UF Search
 Version: 1.1
 Plugin URI: http://www.webadmin.ufl.edu/
-Description: Handling of the search form on <a href="http://news.ufl.edu/">University of Florida News</a> and other WordPress sites at UF. Requires the <code>uf-controller</code> plugin.
+Description: Handling of the search form on WordPress sites at UF. Requires the <code>uf-controller</code> plugin.
 Author: Daniel Westermann-Clark
 Author URI: http://www.webadmin.ufl.edu/
 */
