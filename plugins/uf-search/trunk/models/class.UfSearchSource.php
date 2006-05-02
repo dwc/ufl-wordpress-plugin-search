@@ -1,11 +1,11 @@
 <?php
-if (! class_exists('UfNewsSearchSource')) {
-	class UfNewsSearchSource {
+if (! class_exists('UfSearchSource')) {
+	class UfSearchSource {
 		var $name;
 		var $url;
 		var $parameter;
 
-		function UfNewsSearchSource($theName, $theUrl, $theParameter) {
+		function UfSearchSource($theName, $theUrl, $theParameter) {
 			$this->name = $theName;
 			$this->url = $theUrl;
 			$this->parameter = $theParameter;

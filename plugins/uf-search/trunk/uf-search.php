@@ -1,56 +1,56 @@
 <?php
 /*
-Plugin Name: UF News Search
+Plugin Name: UF Search
 Version: 1.1
 Plugin URI: http://www.webadmin.ufl.edu/
-Description: Handling of the search form on <a href="http://news.ufl.edu/">University of Florida News</a>.
+Description: Handling of the search form on <a href="http://news.ufl.edu/">University of Florida News</a> and other WordPress sites at UF.
 Author: Daniel Westermann-Clark
 Author URI: http://www.webadmin.ufl.edu/
 */
 
-define('UF_NEWS_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
+define('UF_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
 
-require_once(PLUGINS_LIBRARY . 'class.UfNewsOption.php');
-require_once(PLUGINS_LIBRARY . 'class.UfNewsOptionGroup.php');
-require_once(PLUGINS_LIBRARY . 'class.UfNewsOptionsPage.php');
-require_once(PLUGINS_LIBRARY . 'class.UfNewsPlugin.php');
-require_once('controllers/class.UfNewsSearchController.php');
+require_once(PLUGINS_LIBRARY . 'class.UfOption.php');
+require_once(PLUGINS_LIBRARY . 'class.UfOptionGroup.php');
+require_once(PLUGINS_LIBRARY . 'class.UfOptionsPage.php');
+require_once(PLUGINS_LIBRARY . 'class.UfPlugin.php');
+require_once('controllers/class.UfSearchController.php');
 
 
 /*
- * Core plugin code for UF News search.
+ * Core plugin code for UF Search.
  */
-if (! class_exists('UfNewsSearchPlugin')) {
-	class UfNewsSearchPlugin extends UfNewsPlugin {
+if (! class_exists('UfSearchPlugin')) {
+	class UfSearchPlugin extends UfPlugin {
 		function SOURCES() {
 			$sources = array(
-				'this'      => new UfNewsSearchSource(get_settings('blogname'), get_settings('siteurl') . '/index.php', 's'),
-				'web'       => new UfNewsSearchSource('UF Web with Google', 'http://search.ufl.edu/web', 'query'),
-				'phonebook' => new UfNewsSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/display_form.cgi', 'person'),
+				'this'      => new UfSearchSource(get_settings('blogname'), get_settings('siteurl') . '/index.php', 's'),
+				'web'       => new UfSearchSource('UF Web with Google', 'http://search.ufl.edu/web', 'query'),
+				'phonebook' => new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/display_form.cgi', 'person'),
 			);
 
 			return $sources;
 		}
 
-		function UfNewsSearchPlugin() {
+		function UfSearchPlugin() {
 			$this->{get_parent_class(__CLASS__)}('Search', __FILE__);
 
 			$options = array(
-				new UfNewsOptionGroup('General', array(
-					new UfNewsOption('uf_news_search_default_source_name', 'this', 'Default source'),
+				new UfOptionGroup('General', array(
+					new UfOption('uf_search_default_source_name', 'this', 'Default source'),
 				)),
 			);
-			$this->options_page = new UfNewsOptionsPage($this->name, '', $options);
+			$this->options_page = new UfOptionsPage($this->name, '', $options);
 		}
 
 		function add_plugin_hooks() {
 			parent::add_plugin_hooks();
 
-			$controller = new UfNewsSearchController();
+			$controller = new UfSearchController();
 			$this->register_action($controller, 'search');
 		}
 	}
 }
 
-$uf_news_search_plugin = new UfNewsSearchPlugin();
+$uf_search_plugin = new UfSearchPlugin();
 ?>
