@@ -10,10 +10,6 @@ Author URI: http://www.webadmin.ufl.edu/
 
 define('UF_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
 
-require_once(PLUGINS_LIBRARY . 'class.UfOption.php');
-require_once(PLUGINS_LIBRARY . 'class.UfOptionGroup.php');
-require_once(PLUGINS_LIBRARY . 'class.UfOptionsPage.php');
-require_once(PLUGINS_LIBRARY . 'class.UfPlugin.php');
 require_once('controllers/class.UfSearchController.php');
 
 
@@ -49,6 +45,24 @@ if (! class_exists('UfSearchPlugin')) {
 			$controller = new UfSearchController();
 			$this->register_action($controller, 'search');
 		}
+	}
+}
+
+if (! function_exists('get_search_uri')) {
+	function get_search_uri($query) {
+		global $wp_rewrite;
+
+		$search_uri = '';
+
+		$search_permastruct = $wp_rewrite->get_search_permastruct();
+		if ($search_permastruct) {
+			$search_uri = get_bloginfo('url') . '/' . str_replace('%search%', urlencode($query), $search_permastruct);
+		}
+		else {
+			$search_uri = get_bloginfo('url') . '/index.php?s=' . urlencode($query);
+		}
+
+		return $search_uri;
 	}
 }
 
