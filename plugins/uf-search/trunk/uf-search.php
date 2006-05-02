@@ -26,7 +26,7 @@ if (! class_exists('UfSearchPlugin')) {
 			$sources = array(
 				'this'      => new UfSearchSource(get_settings('blogname'), get_settings('siteurl') . '/index.php', 's'),
 				'web'       => new UfSearchSource('UF Web with Google', 'http://search.ufl.edu/web', 'query'),
-				'phonebook' => new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/display_form.cgi', 'person'),
+				'phonebook' => new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/people/search', 'query'),
 			);
 
 			return $sources;
