@@ -42,7 +42,7 @@ if (! class_exists('UfSearchPlugin')) {
 		function add_plugin_hooks() {
 			parent::add_plugin_hooks();
 
-			$controller = new UfSearchController();
+			$controller = new UfSearchController($sources, get_settings('uf_search_default_source_name'));
 			$this->register_action($controller, 'search');
 		}
 	}

@@ -1,18 +1,30 @@
 <?php
-require_once(UF_SEARCH_PLUGIN_BASE . 'models/class.UfSearchSource.php');
+require_once(UF_PLUGIN_FRAMEWORK_PLUGIN_LIBRARY . '/class.UfController.php');
 
 
 if (! class_exists('UfSearchController')) {
-	class UfSearchController {
+	class UfSearchController extends UfController {
+		var $sources = array();
+		var $default = 'this';
+
+		function UfSearchController($sources, $default) {
+			$this->{get_parent_class(__CLASS__)}();
+
+			$this->sources = $sources;
+			$this->default = $default;
+		}
+
 		function handle_search_action() {
-			$reqSource = stripslashes($_GET['source']);
-			$reqQuery = stripslashes($_GET['query']);
+			$source = get_query_var('source');
+			$query = get_query_var('query');
 
-			$sources = UfSearchPlugin::SOURCES();
-			$defaultSource = $sources[get_settings('uf_search_default_source_name')];
+			$sources = $this->sources;
+			$default = $this->default;
 
-			$source = ($sources[$reqSource]) ? $sources[$reqSource] : $defaultSource;
-			$source->search($reqQuery);
+			$default_source = $sources[$default];
+
+			$selected_source = ($sources[$source]) ? $sources[$source] : $default_source;
+			$selected_source->search($query);
 		}
 	}
 }

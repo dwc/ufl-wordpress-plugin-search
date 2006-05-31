@@ -5,10 +5,10 @@ if (! class_exists('UfSearchSource')) {
 		var $url;
 		var $parameter;
 
-		function UfSearchSource($theName, $theUrl, $theParameter) {
-			$this->name = $theName;
-			$this->url = $theUrl;
-			$this->parameter = $theParameter;
+		function UfSearchSource($name, $url, $parameter) {
+			$this->name = $name;
+			$this->url = $url;
+			$this->parameter = $parameter;
 		}
 
 		function search($query) {
