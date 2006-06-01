@@ -12,8 +12,10 @@ define('UF_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
 
 require_once('plugins/class.UfSearchPlugin.php');
 
+/*
+ * Load the plugin after the framework.
+ */
 add_action('plugins_loaded', 'uf_search_plugins_loaded');
-
 
 $uf_search_plugin = null;
 function uf_search_plugins_loaded() {
