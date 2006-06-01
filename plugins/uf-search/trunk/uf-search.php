@@ -5,7 +5,7 @@ Version: 1.1
 Plugin URI: http://www.webadmin.ufl.edu/
 Description: Handling of the search form on WordPress sites at UF. Requires the <code>uf-plugin-framework</code> plugin.
 Author: Daniel Westermann-Clark
-Author URI: http://www.webadmin.ufl.edu/
+Author URI: http://dev.webadmin.ufl.edu/~dwc/
 */
 
 define('UF_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
