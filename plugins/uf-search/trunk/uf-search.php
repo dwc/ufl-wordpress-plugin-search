@@ -10,6 +10,7 @@ Author URI: http://www.webadmin.ufl.edu/
 
 define('UF_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
 
+require_once(UF_PLUGIN_FRAMEWORK_LIBRARY . '/class.UfPlugin.php');
 require_once('controllers/class.UfSearchController.php');
 
 
