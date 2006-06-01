@@ -28,6 +28,15 @@ function uf_search_plugins_loaded() {
 	$uf_search_plugin = new UfSearchPlugin('Search', basename(__FILE__), $sources);
 }
 
+/*
+ * Workaround WordPress' braindead lack of stripslashes.
+ */
+function uf_search_query() {
+	$query = stripslashes(stripslashes($_REQUEST['s']));
+
+	return $query;
+}
+
 function uf_search_uri($query) {
 	global $wp_rewrite;
 
