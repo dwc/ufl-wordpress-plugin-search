@@ -11,7 +11,7 @@ if (! class_exists('UfSearchPlugin')) {
 	class UfSearchPlugin extends UfPlugin {
 		var $sources = array();
 
-		function UfSearchPlugin() {
+		function UfSearchPlugin($name, $file) {
 			$options = array(
 				new UfOptionGroup('General', array(
 					new UfOption('uf_search_default_source_name', 'this', 'Default source'),
@@ -19,11 +19,7 @@ if (! class_exists('UfSearchPlugin')) {
 			);
 			$this->options_page = new UfOptionsPage($this->name, '', $options);
 
-			$this->add_source('this',      new UfSearchSource(get_settings('blogname'), get_settings('siteurl') . '/index.php', 's'));
-			$this->add_source('web',       new UfSearchSource('UF Web with Google', 'http://search.ufl.edu/web', 'query'));
-			$this->add_source('phonebook', new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/people/search', 'query'));
-
-			$this->{get_parent_class(__CLASS__)}('Search', __FILE__);
+			$this->{get_parent_class(__CLASS__)}($name, $file);
 		}
 
 		function add_plugin_hooks() {
