@@ -1,5 +1,5 @@
 <?php
-require_once(UF_PLUGIN_FRAMEWORK_PLUGIN_LIBRARY . '/class.UfController.php');
+require_once(UF_PLUGIN_FRAMEWORK_LIBRARY . '/class.UfController.php');
 
 
 if (! class_exists('UfSearchController')) {
@@ -8,15 +8,15 @@ if (! class_exists('UfSearchController')) {
 		var $default = 'this';
 
 		function UfSearchController($sources, $default) {
-			$this->{get_parent_class(__CLASS__)}();
-
 			$this->sources = $sources;
 			$this->default = $default;
+
+			$this->{get_parent_class(__CLASS__)}();
 		}
 
 		function handle_search_action() {
-			$source = get_query_var('source');
-			$query = get_query_var('query');
+			$source = $_REQUEST['source'];
+			$query = $_REQUEST['query'];
 
 			$sources = $this->sources;
 			$default = $this->default;
