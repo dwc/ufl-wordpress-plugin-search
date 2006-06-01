@@ -22,9 +22,13 @@ if (! class_exists('UfSearchController')) {
 			$default = $this->default;
 
 			$default_source = $sources[$default];
-
 			$selected_source = ($sources[$source]) ? $sources[$source] : $default_source;
-			$selected_source->search($query);
+			if ($selected_source) {
+				$selected_source->search($query);
+			}
+			else {
+				die('Could not determine source');
+			}
 		}
 	}
 }

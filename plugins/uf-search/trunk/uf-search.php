@@ -18,11 +18,14 @@ add_action('plugins_loaded', 'uf_search_plugins_loaded');
 $uf_search_plugin = null;
 function uf_search_plugins_loaded() {
 	global $uf_search_plugin;
-	$uf_search_plugin = new UfSearchPlugin('Search', basename(__FILE__));
 
-	$uf_search_plugin->add_source('this',      new UfSearchSource(get_settings('blogname'), get_settings('siteurl') . '/index.php', 's'));
-	$uf_search_plugin->add_source('web',       new UfSearchSource('UF Web with Google', 'http://search.ufl.edu/web', 'query'));
-	$uf_search_plugin->add_source('phonebook', new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/people/search', 'query'));
+	$sources = array(
+		'this',      new UfSearchSource(get_settings('blogname'), get_settings('siteurl') . '/index.php', 's'),
+		'web',       new UfSearchSource('UF Web with Google', 'http://search.ufl.edu/web', 'query'),
+		'phonebook', new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/people/search', 'query')
+	);
+
+	$uf_search_plugin = new UfSearchPlugin('Search', basename(__FILE__), $sources);
 }
 
 function uf_search_uri($query) {

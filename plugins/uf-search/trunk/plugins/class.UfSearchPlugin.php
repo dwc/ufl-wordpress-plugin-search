@@ -11,13 +11,15 @@ if (! class_exists('UfSearchPlugin')) {
 	class UfSearchPlugin extends UfPlugin {
 		var $sources = array();
 
-		function UfSearchPlugin($name, $file) {
+		function UfSearchPlugin($name, $file, $sources) {
 			$options = array(
 				new UfOptionGroup('General', array(
 					new UfOption('uf_search_default_source_name', 'this', 'Default source'),
 				)),
 			);
 			$this->options_page = new UfOptionsPage($this->name, '', $options);
+
+			$this->sources = $sources;
 
 			$this->{get_parent_class(__CLASS__)}($name, $file);
 		}
