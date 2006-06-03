@@ -10,8 +10,6 @@ Author URI: http://dev.webadmin.ufl.edu/~dwc/
 
 define('UF_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
 
-require_once('plugins/class.UfSearchPlugin.php');
-
 // Load the plugin after the framework
 add_action('plugins_loaded', 'uf_search_plugins_loaded');
 
@@ -26,6 +24,7 @@ function uf_search_plugins_loaded() {
 		'phonebook' => new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/people/search', 'query'),
 	);
 
+	require_once('plugins/class.UfSearchPlugin.php');
 	$uf_search_plugin = new UfSearchPlugin('Search', basename(__FILE__), $sources);
 }
 
