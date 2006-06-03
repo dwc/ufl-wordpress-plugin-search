@@ -10,6 +10,8 @@ Author URI: http://dev.webadmin.ufl.edu/~dwc/
 
 define('UF_SEARCH_PLUGIN_BASE', dirname(__FILE__) . '/');
 
+require_once('models/class.UfSearchSource.php');
+
 // Load the plugin after the framework
 add_action('plugins_loaded', 'uf_search_plugins_loaded');
 
