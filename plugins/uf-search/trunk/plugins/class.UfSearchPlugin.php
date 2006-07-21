@@ -1,8 +1,8 @@
 <?php
-require_once(UF_PLUGIN_FRAMEWORK_LIBRARY . '/class.UfPlugin.php');
 require_once(UF_PLUGIN_FRAMEWORK_LIBRARY . '/class.UfOption.php');
 require_once(UF_PLUGIN_FRAMEWORK_LIBRARY . '/class.UfOptionGroup.php');
 require_once(UF_PLUGIN_FRAMEWORK_LIBRARY . '/class.UfOptionsPage.php');
+require_once(UF_PLUGIN_FRAMEWORK_LIBRARY . '/class.UfPlugin.php');
 require_once(UF_SEARCH_PLUGIN_BASE . '/controllers/class.UfSearchController.php');
 require_once(UF_SEARCH_PLUGIN_BASE . '/models/class.UfSearchSource.php');
 
