@@ -26,7 +26,7 @@ function uf_search_plugins_loaded() {
 	);
 
 	require_once('plugins/class.UfSearchPlugin.php');
-	$uf_search_plugin = new UfSearchPlugin('Search', basename(__FILE__), $sources);
+	$uf_search_plugin = new UfSearchPlugin('Search', __FILE__, $sources);
 }
 
 /*
