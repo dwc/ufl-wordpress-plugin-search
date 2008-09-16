@@ -27,7 +27,7 @@ if (! class_exists('UfSearchPlugin')) {
 		function add_plugin_hooks() {
 			parent::add_plugin_hooks();
 
-			$controller = new UfSearchController($this->sources, get_settings('uf_search_default_source_name'));
+			$controller = new UfSearchController($this->sources, get_option('uf_search_default_source_name'));
 			$this->register_action($controller, 'search');
 		}
 

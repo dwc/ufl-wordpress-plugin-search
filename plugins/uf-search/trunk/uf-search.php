@@ -20,7 +20,7 @@ function uf_search_plugins_loaded() {
 
 	require_once('models/class.UfSearchSource.php');
 	$sources = array(
-		'this'      => new UfSearchSource(get_settings('blogname'), get_settings('siteurl') . '/index.php', 's'),
+		'this'      => new UfSearchSource(get_option('blogname'), get_option('siteurl') . '/index.php', 's'),
 		'web'       => new UfSearchSource('UF Web with Google', 'http://search.ufl.edu/web', 'query'),
 		'phonebook' => new UfSearchSource('UF Phonebook', 'http://phonebook.ufl.edu/people/search', 'query'),
 	);
