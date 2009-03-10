@@ -17,7 +17,7 @@ if (! class_exists('UfSearchPlugin')) {
 					new UfOption('uf_search_default_source_name', 'this', 'Default source'),
 				)),
 			);
-			$this->options_page = new UfOptionsPage($name, '', $options);
+			$this->add_admin_page(new UfOptionsPage($name, '', $options));
 
 			$this->sources = $sources;
 
